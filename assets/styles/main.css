@@ -1811,6 +1811,10 @@ body {
         display: inline-block;
         margin: 0px 10px;
     }
+
+    .scroll_up {
+        right: 1.1rem;
+    }
 }
 
 @media (max-width: 992px) {
