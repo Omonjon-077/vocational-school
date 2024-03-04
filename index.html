@@ -19,14 +19,13 @@
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/styles/fontawesome.css">
     <link rel="stylesheet" href="assets/styles/boxicons.min.css">
-    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/main.css?v=0.1">
     <link rel="stylesheet" href="assets/styles/owl.css">
     <link rel="stylesheet" href="assets/styles/animate.css">
     <link rel="stylesheet" href="assets/styles/swiper-bundle.min.css">
 </head>
 
 <body>
-
 <!-- ***** Preloader Start ***** -->
 <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">
@@ -40,12 +39,31 @@
 </div>
 <!-- ***** Preloader End ***** -->
 
+<!-- ***** Menu Mobile Start ***** -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="d-flex flex-column align-items-center row-gap-3">
+            <li class=""><a class="text-self-primary" href="#top">Home</a></li>
+            <li class=""><a class="text-self-primary" href="#services">Services</a></li>
+            <li class=""><a class="text-self-primary" href="#courses">Courses</a></li>
+            <li class=""><a class="text-self-primary" href="#team">Team</a></li>
+            <li class=""><a class="text-self-primary" href="#events">Events</a></li>
+            <li class=""><a class="text-self-primary" href="#contact">Register Now!</a></li>
+        </ul>
+    </div>
+</div>
+<!-- ***** Menu Mobile End ***** -->
+
 <!-- ***** Header Area Start ***** -->
 <header class="header-area bg-self-primary py-4" id="myHeader">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <nav class="main-nav align-items-center">
+                <nav class="main-nav align-items-center justify-content-between">
                     <!-- ***** Logo Start ***** -->
                     <a href="index.html" class="logo">
                         <h1>School</h1>
@@ -62,7 +80,7 @@
                     </div>
                     <!-- ***** Serach Start ***** -->
                     <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
+                    <ul class="nav d-none d-lg-flex">
                         <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                         <li class="scroll-to-section"><a href="#services">Services</a></li>
                         <li class="scroll-to-section"><a href="#courses">Courses</a></li>
@@ -70,22 +88,17 @@
                         <li class="scroll-to-section"><a href="#events">Events</a></li>
                         <li class="scroll-to-section"><a href="#contact">Register Now!</a></li>
                     </ul>
-                    <div class="form-check form-switch d-none">
-                        <label class="form-check-label ms-3" for="lightSwitch">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 width="25"
-                                 height="25"
-                                 fill="currentColor"
-                                 class="bi bi-brightness-high"
-                                 viewBox="0 0 16 16">
-                                <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
-                            </svg>
-                        </label>
-                        <input class="form-check-input" type="checkbox" id="lightSwitch"/>
+
+                    <div class="d-flex align-items-center">
+                        <i class="bx bx-moon fs-5 text-white cursor-pointer ms-3" title="kunduzgi/tungi rejim"
+                           id="theme-button"></i>
+
+                        <button class="border-0 bg-transparent d-block d-lg-none" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                                aria-controls="offcanvasExample">
+                            <i class="fa-solid fa-bars text-white ms-3"></i>
+                        </button>
                     </div>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
                     <!-- ***** Menu End ***** -->
                 </nav>
             </div>
@@ -251,7 +264,8 @@
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                There are more than one hundred responsive HTML templates to choose from <strong>Template</strong>Mo
+                                There are more than one hundred responsive HTML sites to choose from
+                                <strong>test</strong>examples
                                 website. You can browse by different tags or categories.
                             </div>
                         </div>
@@ -266,9 +280,8 @@
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                You can also search on Google with specific keywords such as <code>templatemo business
-                                templates, templatemo gallery templates, admin dashboard templatemo, 3-column
-                                templatemo, etc.</code>
+                                You can also search on Google with specific keywords such as <code>bootstrap 5, swiper
+                                js, owl css, counter js, jquery, animate css, boxicons and fontawesome icons etc.</code>
                             </div>
                         </div>
                     </div>
@@ -404,25 +417,25 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="counter">
-                                <h2 class="timer count-title count-number" data-to="150" data-speed="1000"></h2>
+                                <h2 class="timer count-title count-number count-digit">150</h2>
                                 <p class="count-text ">Happy Students</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="counter">
-                                <h2 class="timer count-title count-number" data-to="804" data-speed="1000"></h2>
+                                <h2 class="timer count-title count-number count-digit">804</h2>
                                 <p class="count-text ">Course Hours</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="counter">
-                                <h2 class="timer count-title count-number" data-to="50" data-speed="1000"></h2>
+                                <h2 class="timer count-title count-number count-digit">50</h2>
                                 <p class="count-text ">Employed Students</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="counter end">
-                                <h2 class="timer count-title count-number" data-to="15" data-speed="1000"></h2>
+                                <h2 class="timer count-title count-number count-digit">15</h2>
                                 <p class="count-text ">Years Experience</p>
                             </div>
                         </div>
@@ -567,7 +580,7 @@
                                 </li>
                                 <li>
                                     <span>Date:</span>
-                                    <h6>16 Feb 2036</h6>
+                                    <h6>16 Feb 2024</h6>
                                 </li>
                                 <li>
                                     <span>Duration:</span>
@@ -578,7 +591,7 @@
                                     <h6>$120</h6>
                                 </li>
                             </ul>
-                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                            <a href="#"><i class="fa fa-angle-right icon-right-transform transition"></i></a>
                         </div>
                     </div>
                 </div>
@@ -599,7 +612,7 @@
                                 </li>
                                 <li>
                                     <span>Date:</span>
-                                    <h6>24 Feb 2036</h6>
+                                    <h6>24 Feb 2024</h6>
                                 </li>
                                 <li>
                                     <span>Duration:</span>
@@ -610,7 +623,7 @@
                                     <h6>$320</h6>
                                 </li>
                             </ul>
-                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                            <a href="#"><i class="fa fa-angle-right icon-right-transform transition"></i></a>
                         </div>
                     </div>
                 </div>
@@ -631,7 +644,7 @@
                                 </li>
                                 <li>
                                     <span>Date:</span>
-                                    <h6>12 Mar 2036</h6>
+                                    <h6>12 Mar 2024</h6>
                                 </li>
                                 <li>
                                     <span>Duration:</span>
@@ -642,7 +655,7 @@
                                     <h6>$440</h6>
                                 </li>
                             </ul>
-                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                            <a href="#"><i class="fa fa-angle-right icon-right-transform transition"></i></a>
                         </div>
                     </div>
                 </div>
@@ -662,9 +675,9 @@
                         of charge. You may support us by sharing our website to your friends.</p>
                     <div class="special-offer">
                         <span class="offer">off<br><em>50%</em></span>
-                        <h6>Valide: <em>24 April 2036</em></h6>
+                        <h6>Valide: <em>24 April 2024</em></h6>
                         <h4>Special Offer <em>50%</em> OFF!</h4>
-                        <a href="#"><i class="fa fa-angle-right"></i></a>
+                        <a href="#"><i class="fa fa-angle-right icon-right-transform transition"></i></a>
                     </div>
                 </div>
             </div>
@@ -703,11 +716,13 @@
     </div>
 </div>
 
-<footer>
+<footer class="pt-5 px-5">
     <div class="container">
         <div class="col-lg-12">
-            <p>Copyright © 2036 School Organization. All rights reserved. &nbsp;&nbsp;&nbsp; Design: <a
-                    href="https://omonjon.triger.uz" target="_blank">Omonjon</a></p>
+            <p>Copyright © 2024 School Organization. All rights reserved. &nbsp;&nbsp;&nbsp; <br> <br> Design & Coder:
+                <a
+                        href="https://omonjon.triger.uz" title="Omonjon Web Saytiga o'tish" target="_blank">Omonjon</a>
+            </p>
         </div>
     </div>
 </footer>
@@ -724,8 +739,7 @@
 <script src="assets/scripts/isotope.min.js"></script>
 <script src="assets/scripts/swiper-bundle.min.js"></script>
 <script src="assets/scripts/owl-carousel.js"></script>
-<script src="assets/scripts/counter.js"></script>
-<script src="assets/scripts/main.js"></script>
+<script src="assets/scripts/main.js?v=0.4"></script>
 
 </body>
 </html>

@@ -104,6 +104,26 @@ a {
     text-decoration: none !important;
 }
 
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.outline-none {
+    outline: none !important;
+}
+
+.btn-close:focus {
+    box-shadow: 0 0 0 0.25rem var(--bs-self-primary);
+}
+
+.transition {
+    transition: .35s;
+}
+
+a:hover .icon-right-transform {
+    transform: translateX(5px);
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: #1e1e1e;
     margin-top: 0px;
@@ -192,6 +212,16 @@ body {
 .main-button a:hover {
     background-color: var(--bs-self-primary);
     color: #fff;
+}
+
+.bg-dark .section-heading h2 {
+    color: white;
+}
+
+.bg-dark .testimonials .section-heading h2,
+.bg-dark .contact-us .section-heading h2,
+.bg-dark .about-us .section-heading h2 {
+    color: black;
 }
 
 /* 
@@ -613,7 +643,7 @@ Header Style
     }
 
     .header-area .main-nav .logo {
-        position: absolute;
+        position: initial;
         left: 30px;
         top: 0px;
     }
@@ -627,7 +657,7 @@ Header Style
     }
 
     .header-area .main-nav .border-button {
-        position: absolute;
+        position: initial;
         top: 15px;
         right: 70px;
     }
@@ -645,7 +675,7 @@ Header Style
     .header-area {
         background-color: transparent;
         padding: 0px 15px;
-        height: 80px;
+        height: initial;
         box-shadow: none;
         text-align: center;
     }
@@ -656,7 +686,6 @@ Header Style
 
     .header-area .logo {
         margin-left: 0px;
-        margin-top: 30px;
     }
 
     .header-area .menu-trigger {
@@ -1690,7 +1719,7 @@ footer {
 
 footer p {
     text-align: center;
-    line-height: 150px;
+    line-height: initial;
     color: #fff;
     font-weight: 400;
 }
@@ -1718,6 +1747,9 @@ footer::before {
     content: '';
     z-index: 2;
 }
+
+/*=============== SCROLL BAR | Omonjon ===============*/
+
 
 /*=============== SCROLL UP | Omonjon ===============*/
 .scroll_up {
@@ -1880,6 +1912,25 @@ body {
         margin-top: 30px;
     }
 
+    .bg-dark .section-heading h2,
+    .bg-dark .section-heading p,
+    .bg-dark .offcanvas-header .offcanvas-title{
+        color: white !important;
+    }
+
+    .bg-dark .offcanvas-header {
+        border-bottom: 1px solid lightcyan !important;
+    }
+
+    .bg-dark .offcanvas-header,
+    .bg-dark .offcanvas-body{
+        background-color: var(--bs-dark) !important;
+    }
+
+    .bg-dark .offcanvas-header .btn-close {
+        filter: invert(1);
+    }
+
     .about-us .main-button a {
         background-color: var(--bs-self-primary);
         color: #fff;
@@ -2005,7 +2056,7 @@ body {
         width: 40px;
         height: 40px;
         line-height: 40px;
-        top: 15px;
+        top: 30%;
         right: 15px;
     }
 

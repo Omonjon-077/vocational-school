@@ -189,6 +189,38 @@
             });
         });
     }
+
+    function visible(partial) {
+        var $t = partial,
+            $w = jQuery(window),
+            viewTop = $w.scrollTop(),
+            viewBottom = viewTop + $w.height(),
+            _top = $t.offset().top,
+            _bottom = _top + $t.height(),
+            compareTop = partial === true ? _bottom : _top,
+            compareBottom = partial === true ? _top : _bottom;
+
+        return ((compareBottom <= viewBottom) && (compareTop >= viewTop) && $t.is(':visible'));
+
+    }
+
+    $(window).scroll(function () {
+
+        if (visible($('.count-digit'))) {
+            if ($('.count-digit').hasClass('counter-loaded')) return;
+            $('.count-digit').addClass('counter-loaded');
+            $('.count-digit').each(function () {
+                var $this = $(this);
+                jQuery({Counter: 0}).animate({Counter: $this.text()}, {
+                    duration: 2800,
+                    easing: 'swing',
+                    step: function () {
+                        $this.text(Math.ceil(this.Counter));
+                    }
+                });
+            });
+        }
+    })
 })(window.jQuery);
 
 /*=============== Header Fixed ===============*/
@@ -210,123 +242,34 @@ if ($("#myHeader").length) {
 }
 
 /*=============== Dark & Light Mode ===============*/
-(function () {
-    let lightSwitch = document.getElementById('lightSwitch');
-    if (!lightSwitch) {
-        return;
-    }
+const themeButton = document.getElementById('theme-button')
+const darkTheme = 'bg-dark'
+const iconTheme = 'bx-sun'
 
-    /**
-     * @function darkmode
-     * @summary: changes the theme to 'dark mode' and save settings to local stroage.
-     * Basically, replaces/toggles every CSS class that has '-light' class with '-dark'
-     */
-    function darkMode() {
-        document.querySelectorAll('.bg-light').forEach((element) => {
-            element.className = element.className.replace(/-light/g, '-dark');
-        });
+// Previously selected topic (if user selected)
+const selectedTheme = localStorage.getItem('selected-theme')
+const selectedIcon = localStorage.getItem('selected-icon')
 
-        document.querySelectorAll('.link-dark').forEach((element) => {
-            element.className = element.className.replace(/link-dark/, 'text-white');
-        });
+// We obtain the current theme that the interface has by validating the dark-theme class
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun'
 
-        document.body.classList.add('bg-dark');
+// We validate if the user previously chose a topic
+if (selectedTheme) {
+    // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+    themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
+}
 
-        if (document.body.classList.contains('text-dark')) {
-            document.body.classList.replace('text-dark', 'text-light');
-        } else {
-            document.body.classList.add('text-light');
-        }
-
-        // Tables
-        var tables = document.querySelectorAll('table');
-        for (var i = 0; i < tables.length; i++) {
-            // add table-dark class to each table
-            tables[i].classList.add('table-dark');
-        }
-
-        // set light switch input to true
-        if (!lightSwitch.checked) {
-            lightSwitch.checked = true;
-        }
-        localStorage.setItem('lightSwitch', 'dark');
-    }
-
-    /**
-     * @function lightmode
-     * @summary: changes the theme to 'light mode' and save settings to local stroage.
-     */
-    function lightMode() {
-        document.querySelectorAll('.bg-dark').forEach((element) => {
-            element.className = element.className.replace(/-dark/g, '-light');
-        });
-
-        document.querySelectorAll('.text-white').forEach((element) => {
-            element.className = element.className.replace(/text-white/, 'link-dark');
-        });
-
-        document.body.classList.add('bg-light');
-
-        if (document.body.classList.contains('text-light')) {
-            document.body.classList.replace('text-light', 'text-dark');
-        } else {
-            document.body.classList.add('text-dark');
-        }
-
-        // Tables
-        var tables = document.querySelectorAll('table');
-        for (var i = 0; i < tables.length; i++) {
-            if (tables[i].classList.contains('table-dark')) {
-                tables[i].classList.remove('table-dark');
-            }
-        }
-
-        if (lightSwitch.checked) {
-            lightSwitch.checked = false;
-        }
-        localStorage.setItem('lightSwitch', 'light');
-    }
-
-    /**
-     * @function onToggleMode
-     * @summary: the event handler attached to the switch. calling @darkMode or @lightMode depending on the checked state.
-     */
-    function onToggleMode() {
-        if (lightSwitch.checked) {
-            darkMode();
-        } else {
-            lightMode();
-        }
-    }
-
-    /**
-     * @function getSystemDefaultTheme
-     * @summary: get system default theme by media query
-     */
-    function getSystemDefaultTheme() {
-        const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
-        if (darkThemeMq.matches) {
-            return 'dark';
-        }
-        return 'light';
-    }
-
-    function setup() {
-        var settings = localStorage.getItem('lightSwitch');
-        if (settings == null) {
-            settings = getSystemDefaultTheme();
-        }
-
-        if (settings == 'dark') {
-            lightSwitch.checked = true;
-        }
-
-        lightSwitch.addEventListener('change', onToggleMode);
-        onToggleMode();
-    }
-
-    setup();
-})();
+// Activate / deactivate the theme manually with the button
+themeButton.addEventListener('click', () => {
+    // Add or remove the dark / icon theme
+    document.body.classList.toggle(darkTheme)
+    themeButton.classList.toggle(iconTheme)
+    // We save the theme and the current icon that the user chose
+    localStorage.setItem('selected-theme', getCurrentTheme())
+    localStorage.setItem('selected-icon', getCurrentIcon())
+})
 
 /*=============== SHOW SCROLL UP ===============*/
 const scrollUp = () => {
